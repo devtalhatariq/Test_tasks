@@ -1,0 +1,24 @@
+function findLongestWord(sentence) {
+  let words = sentence.match(/[a-z]+/gi);
+  let longestWord = '';
+
+  for (let word of words) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    } else if (word.length === longestWord.length && countVowels(word) > countVowels(longestWord)) {
+      longestWord = word;
+    }
+  }
+  
+  return longestWord;
+}
+
+function countVowels(word) {
+  let vowelCount = 0;
+  for (let char of word) {
+    if ('aeiou'.includes(char.toLowerCase())) {
+      vowelCount++;
+    }
+  }
+  return vowelCount;
+}
